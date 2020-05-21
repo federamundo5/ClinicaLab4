@@ -1,0 +1,65 @@
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: rgb(7, 92, 73);" >
+  <a class="navbar-brand" href="#">Clinica</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/Home">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+  
+    <div  class="dropdown">
+      <button class="dropbtn" routerLink="/Admin">Admin</button>
+      <div class="dropdown-content">
+      <a  routerLink="/Admin/Listado">Listado</a>
+      <a  routerLink="/Admin/Alta">Alta</a>
+      </div>
+    </div>
+
+
+    <div  class="dropdown">
+        <button class="dropbtn" routerLink="/Profesional">Profesional</button>
+        <div class="dropdown-content">
+        <a  routerLink="/Profesional/Listado">Listado</a>
+        <a  routerLink="/Profesional/Alta">Alta</a>
+        </div>
+      </div>
+  
+
+      <div  class="dropdown">
+        <button class="dropbtn" routerLink="/Paciente">Paciente</button>
+        <div class="dropdown-content">
+        <a  routerLink="/Paciente/Listado">Listado</a>
+        <a  routerLink="/Paciente/Alta">Alta</a>
+        </div>
+      </div>
+  
+
+
+     <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/Registro"><span class="fa fa-address-card"></span> Registrarse</a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" routerLink="/Login"><span class="fa fa-user"></span> Login</a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" (click)="Logout()"routerLink="/Login"><span class="fa fa-user"></span> Log Out</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
