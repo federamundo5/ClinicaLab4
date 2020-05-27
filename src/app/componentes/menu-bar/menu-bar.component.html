@@ -48,13 +48,13 @@
 
       <ul class="nav navbar-nav ml-auto">
         <li [hidden]="logeado" class="nav-item">
-          <a class="nav-link"  routerLink="/Registro/Test"><span class="fa fa-address-card"></span> Registrarse</a>
+          <a class="nav-link"  routerLink="/Registro"><span class="fa fa-address-card"></span> Registrarse</a>
         </li>
         <li [hidden]="logeado" class="nav-item">
           <a class="nav-link" routerLink="/Login"><span class="fa fa-user"></span> Login</a>
         </li>
         <li [hidden]="!logeado" class="nav-item">
-          <a class="nav-link" (click)="Logout()"routerLink="/Login/Test/"><span class="fa fa-user"></span> Log Out</a>
+          <a class="nav-link" (click)="Logout()"routerLink="/Login"><span class="fa fa-user"></span> Log Out</a>
         </li>
       </ul>
 
