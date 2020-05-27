@@ -1,0 +1,20 @@
+
+
+
+<div class="card">
+    <img *ngIf="imgURL" [src]="imgURL" height="200" >
+    <img *ngIf="!imgURL" src="../../../assets/upload.png"  id="imagen"  height="200" >
+    <div class="card-body">
+      
+      <form [formGroup]="archivoForm">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" accept="image/jpeg" class="custom-file-input" #file aria-describedby="inputGroupFileAddon01" formControlName="archivo" (change)="preview(file.files)" (change)="cambioArchivo($event)">
+            <label class="custom-file-label" for="inputGroupFile01">Elegir Archivo</label>
+          </div>
+          </div>
+      </form>
+    </div>
+  </div>
+  
+  

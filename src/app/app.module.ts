@@ -16,6 +16,14 @@ import { ProfesionalAltaComponent } from './componentes/profesional/profesional-
 import { ProfesionalListadoComponent } from './componentes/profesional/profesional-listado/profesional-listado.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { MenuBarComponent } from './componentes/menu-bar/menu-bar.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+import { UploadFileComponent } from './componentes/upload-file/upload-file.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,11 +40,18 @@ import { MenuBarComponent } from './componentes/menu-bar/menu-bar.component';
     ProfesionalAltaComponent,
     ProfesionalListadoComponent,
     HomeComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    UploadFileComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

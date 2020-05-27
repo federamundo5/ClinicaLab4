@@ -1,1 +1,27 @@
-<p>login works!</p>
+<app-menu-bar></app-menu-bar>
+
+<form action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <img src="./assets/avatar.png" alt="Avatar" class="avatar">
+    </div>
+  
+    <div class="container">
+      <label for="uname"><b>Nombre de Usuario</b></label>
+      <input type="text" placeholder="Ingrese Usuario" [(ngModel)]="email"   name="email" required>
+  
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Ingrese Contraseña"  [(ngModel)]="clave"  name="psw" required>
+          
+      <button type="submit" (click)="Entrar()" >Ingresar</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Recuerdame
+      </label>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+
+
+  <div id="snackbar">{{Mensajes}}</div>

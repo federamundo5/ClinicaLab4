@@ -1,1 +1,76 @@
-<p>registro works!</p>
+<app-menu-bar></app-menu-bar>
+
+
+<form class="formulario" >
+  <div class="container">
+      <h1>Registro</h1>
+      <p>Por favor llene los datos para registrarse.</p>
+      <hr>
+
+ <h2> Seleccione Perfil</h2>
+
+      
+      <div class="btn-group">
+        <button class="button"  (click)="selectPaciente()">Paciente</button>
+        <button class="button" (click)="selectProfesional()">Profesional</button>
+        <button class="button" (click)="selectAdmin()">Admin</button>
+      </div>
+
+
+      <div id ="formDiv" *ngIf="perfilSeleccionado">
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Ingrese email"[(ngModel)]="email"  name="email" required>
+  
+
+      <label for="email"><b>Nombre </b></label>
+      <input type="text" placeholder="Ingrese Nombre"[(ngModel)]="nombre"  name="nombre" required>
+
+
+      <label for="email"><b>Apellido </b></label>
+      <input type="text" placeholder="Ingrese Apellido"[(ngModel)]="apellido"  name="apellido" required>
+
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Ingrese Contraseña" id="clave"  minlength="6" pattern="[a-zA-Z0-9]{6}" [(ngModel)]="clave"name="clave" required>
+      <div *ngIf="lenghtError">
+        Debe tener 6 caracteres.
+      </div>
+      <hr>
+
+
+      
+
+
+      <div style="width: 100%; display: table; padding-bottom: 55px;">
+        <div style="display: table-row">
+
+      
+               <div style="width: 350px; margin-left:35px; padding-left:35px; display: table-cell;" *ngIf="profesional">    
+                <label for="perfil"><b>Seleccione Especialidades</b></label><br>
+              <select multiple  [(ngModel)]="especialidadSeleccionada" name="selectEspecialidades">
+                <option *ngFor="let item of especialidades"  [value]="item.data.especialidad">{{item.data.especialidad}}</option>
+             </select>                                
+            </div>
+
+        </div>
+    </div>
+
+   
+    <div style="width: 100%; display: table;">
+      <div style="display: table-row">
+          <div style="width: 350px; display: table-cell;">   <app-upload-file  (datosImagen)="obtieneImagen1($event)" ></app-upload-file>            </div>
+          <div style="width: 350px; margin-left:35px; padding-left:35px; display: table-cell;">       <app-upload-file (datosImagen)="obtieneImagen2($event)"></app-upload-file>            </div>
+      </div>
+  </div>
+
+  
+      <button type="submit" (click)="Registrar()" class="registerbtn">Registrarse</button>
+    </div>
+  </div>
+    <div class="container signin">
+      <p>Ya tiene Cuenta? <a routerLink="/Login">Ingresar</a>.</p>
+    </div>
+
+
+    
+  </form>
