@@ -38,12 +38,10 @@
           </select>
         </div>
 
-        <mat-form-field class="example-full-width">
             <label>Fecha        </label>
             <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
           
           <select class="select"  id="horariosInput"> 
             <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
