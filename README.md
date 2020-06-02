@@ -1,16 +1,30 @@
-# Clinica
+# Clinica-Online
+La clínica OnLine,  es una aplicacion que contiene especialista en salud, cuenta
+actualmente con consultorios (6 en la actualidad),
+dos laboratorios (físicos en la clínica), y una sala
+de espera general. Está abierta al público de lunes
+a viernes en el horario de 8:00 a 19:00, y los
+sábados en el horario de 8:00 a 14:00.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
-## Development server
+## Objetivo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+El objetivo de la aplicacion es para que los usuarios puedan conseguir turnos medicos y ser atendidos.
 
-## Code scaffolding
+## Usuarios
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+La aplicacion cuenta con 3 perfiles de usuarios.
 
-## Build
+Los pacientes quienes van a sacar turno y buscar ser atendidos.
+
+Los profesionales que van a atender a estos pacientes.
+
+Los administradores que administran la clinica y a sus usuarios.
+
+## Acceso heroku
+
+Se puede acceder a esta aplicacion mediante el siguiente [link](https://clinicafr.herokuapp.com/)
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
