@@ -1,11 +1,25 @@
 <app-menu-bar></app-menu-bar>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <form class="formulario" >
   <div class="container">
       <h1>Registro</h1>
-      <p>Por favor llene los datos para registrarse.</p>
+      <p>Por favor llene los datos para registrarse. {{this.user}}</p>
       <hr>
+
+
+      <select multiple  [(ngModel)]="especialidadSeleccionada" name="selectusuarios">
+        <option *ngFor="let item of usuarios"  [value]="item.data.email">{{item.data.email}}</option>
+     </select>     
+
+
+      <re-captcha (resolved)="resolved($event,'as')"
+      siteKey="6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR">  
+</re-captcha>
+
+
+<div id="captchaResolved" *ngIf="captchaResuelto">
 
  <h2> Seleccione Perfil</h2>
 
@@ -13,8 +27,11 @@
       <div class="btn-group">
         <button class="button"  (click)="selectPaciente()">Paciente</button>
         <button class="button" (click)="selectProfesional()">Profesional</button>
-        <button class="button" (click)="selectAdmin()">Admin</button>
+        <button *ngIf="perfilYaLogeado=='Admin'" class="button"  (click)="selectAdmin()">Admin</button>
       </div>
+
+    </div>
+
 
 
       <div id ="formDiv" *ngIf="perfilSeleccionado">
@@ -62,6 +79,7 @@
           <div style="width: 350px; margin-left:35px; padding-left:35px; display: table-cell;">       <app-upload-file (datosImagen)="obtieneImagen2($event)"></app-upload-file>            </div>
       </div>
   </div>
+
 
   
       <button type="submit" (click)="Registrar()" class="registerbtn">Registrarse</button>

@@ -1,0 +1,23 @@
+<app-menu-bar></app-menu-bar>
+
+
+<h2>Profesionales sin Aprobar</h2>
+
+<table class="table table-striped" id="tablaResults" class="mat-elevation-z8" style="width: 100%; padding: 10px;">
+    <thead id="theadResults">
+        <tr>
+          <th>Email</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let profesional of profesionales">
+        <td>{{profesional.email}} </td>
+        <td>{{profesional.nombre}} </td> 
+        <td>{{profesional.apellido}} </td> 
+        <button id="buttonAprobar" (click)="Aprobar(profesional.identificador)"> Aprobar</button>
+        </tr>
+    </tbody>
+</table>

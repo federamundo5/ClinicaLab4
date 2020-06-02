@@ -24,6 +24,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
 import { UploadFileComponent } from './componentes/upload-file/upload-file.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ProfesionalesPendientesComponent } from './componentes/profesionales-pendientes/profesionales-pendientes.component';
+import { SacarTurnoComponent } from './componentes/sacar-turno/sacar-turno.component';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-especialidad.component';
 
 @NgModule({
   declarations: [
@@ -42,16 +49,22 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     HomeComponent,
     MenuBarComponent,
     UploadFileComponent,
+    ProfesionalesPendientesComponent,
+    SacarTurnoComponent,
+    AltaEspecialidadComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
   AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+  AngularFireAuthModule, BrowserAnimationsModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

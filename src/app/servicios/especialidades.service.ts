@@ -36,6 +36,14 @@ export class EspecialidadesService {
    // return this.firestore.collection('usuarios').add(data);
   }
 
+  public nuevaEspecialidad(especialidad: string) {
+    
+    let data = {
+      especialidad: especialidad
+    }
+    return this.firestore.collection('especialidades').add(data);
+  }
+
   private listaEspecialidades( datos: Object ){
     let especialidades:Especialidad[] = [];
     if(datos == null) return [];

@@ -7,6 +7,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import {EspecialidadesService} from '../../servicios/especialidades.service';
 import {UsuariosServiceService} from '../../servicios/usuarios-service.service';
 import { FileServiceService } from 'src/app/servicios/file-service.service';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-registro',
@@ -36,13 +38,19 @@ perfil;
     lenghtError = false;
     imagen1;
     imagen2;
-
+perfilYaLogeado;
     imagen1Alta;
     imagen2Alta;
+user;
+    captchaResuelto;
+usuarios = [];
+    
+
+
   constructor(  private authService: AuthService,  private router: Router,      private constructorForm: FormBuilder,   private especialidadesService: EspecialidadesService, 
     private usuariosService: UsuariosServiceService, private fileService: FileServiceService  )
    {  
-   }  
+  }  
 
 
    
@@ -56,7 +64,28 @@ perfil;
         });
       })
     });
+  
+
+    this.usuariosService.getUserbyStorage().subscribe((catsSnapshot) => {
+      this.usuarios = [];
+      catsSnapshot.forEach((catData: any) => {
+        this.usuarios.push({
+          id: catData.payload.doc.id,
+          data: catData.payload.doc.data()
+        });
+      })
+    });
+
   }
+
+
+
+  resolved(captchaResponse: string, res) {
+    this.captchaResuelto = true;
+    console.log(`Resolved response token: ${captchaResponse}`);
+   
+  }
+
 
   Registrar()
   {
@@ -74,22 +103,28 @@ perfil;
     {
       
      this.newUser();
+     if(this.perfil == "Profesional"){
       this.especialidadesService.especialidadesUsuario(this.especialidadSeleccionada,this.email);
+    }
+
+    window.localStorage.setItem("User",this.email);
       this.router.navigate(['/Home']);
     }).catch(error => console.log("Error:", error));
     
 
  
 
-
     console.log(this.email,this.especialidadSeleccionada,this.imagen1,this.imagen2,this.nombre,this.apellido,this.clave);
   }
 
 
+
+
+
   newUser()
 {
-  this.fileService.subirArchivo(this.email+"_img1",this.imagen1,{persona:this.nombre+" "+this.apellido}).then((img)=>{
-    this.fileService.subirArchivo(this.email+"_img2",this.imagen2,{persona:this.nombre+" "+this.apellido}).then(img2=>{
+  this.fileService.subirArchivo(this.email+"_img1",this.imagen1,{Nombre:this.nombre, Apellido: this.apellido, email: this.email}).then((img)=>{
+    this.fileService.subirArchivo(this.email+"_img2",this.imagen2,{Nombre:this.nombre, Apellido: this.apellido, email: this.email}).then(img2=>{
      img.ref.getDownloadURL().then(data=>{
       this.imagen1Alta = data;
       img2.ref.getDownloadURL().then(data2=>{
@@ -101,7 +136,8 @@ perfil;
           apellido: this.apellido,
           perfil: this.perfil,
           imagen1: this.imagen1Alta,
-          imagen2: this.imagen2Alta
+          imagen2: this.imagen2Alta,
+          aprobado: false
         }
 
         this.usuariosService.newUser(data).then(() => {

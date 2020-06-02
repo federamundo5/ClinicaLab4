@@ -1,0 +1,18 @@
+#mainDiv
+{
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+#botonTurnos {
+    padding: 12px 28px;
+    background-color: rgb(0, 151, 161); /* Green */
+   color:white;
+    transition-duration: 0.4s;
+  }
+  
+  #botonTurnos:hover {
+    background-color: rgb(0, 102, 97); /* Green */
+    color: white;
+  }
+  

@@ -1,0 +1,10 @@
+
+
+<h4>Nueva Especialidad:</h4>
+<form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+      <label for="email">Especialidad:</label>
+      <input type="text" class="form-control"  [(ngModel)]="especialidad" name="especialidad"  id="especialidad">
+    </div>
+    <button type="submit"(click)="Nueva()" style ="margin-left: 15px" class="btn btn-dark">Agregar</button>{{mensajeRetorno}}
+  </form>

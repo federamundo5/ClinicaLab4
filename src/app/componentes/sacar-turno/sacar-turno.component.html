@@ -1,0 +1,60 @@
+
+<app-menu-bar></app-menu-bar>
+
+<head>
+    <!-- ... -->
+    <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  </head>
+
+
+<h3>Nuevo Turno</h3>
+
+<div class="card" style="justify-content: center;">
+    <div class="card-body">
+
+        <form>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
+            </div>
+            <select class="select" id="inputGroupSelect01" > Seleccionar
+                <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
+            <option [value]="item.data.especialidad" *ngFor="let item of this.especialidades">{{item.data.especialidad}}</option>
+            </select>
+         </div>
+         <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Profesionales</label>
+          </div>
+          <select class="select"  id="profesionalInput"> 
+              <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
+              <option [value]="0" *ngIf="this.profesionales.length==0"selected >No hay profesionales disponibles</option>
+              <option [value]="item.id"  *ngFor="let item of this.profesionales">{{item.apellido}}</option>
+          </select>
+        </div>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Fecha        </mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+          <select class="select"  id="horariosInput"> 
+            <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
+            <option [value]="item"  *ngFor="let item of this.horarios">{{item}}</option>
+        </select>
+
+          
+        </form>
+    
+
+        
+    </div>
+
+    </div>

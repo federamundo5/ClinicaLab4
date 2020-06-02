@@ -11,6 +11,9 @@ import { PacienteComponent } from './componentes/paciente/paciente.component';
 import { PacienteListadoComponent } from './componentes/paciente/paciente-listado/paciente-listado.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { ProfesionalesPendientesComponent } from './componentes/profesionales-pendientes/profesionales-pendientes.component';
+import { SacarTurnoComponent } from './componentes/sacar-turno/sacar-turno.component';
+import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-especialidad.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -24,7 +27,10 @@ const routes: Routes = [
   {path: 'Paciente' , component: PacienteComponent},
   {path: 'Paciente/Listado' , component: PacienteListadoComponent},
   {path: 'Paciente/Alta' , component: PacienteAltaComponent},
+  {path: 'Admin/Pendientes' , component: ProfesionalesPendientesComponent},
+  {path: 'Especialidad/Alta' , component: AltaEspecialidadComponent},
   {path: 'Login' , component: LoginComponent},
+  {path: 'Turno' , component: SacarTurnoComponent},
   {path: 'Registro' , component: RegistroComponent},
 ];
 
