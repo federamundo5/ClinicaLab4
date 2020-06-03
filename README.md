@@ -27,7 +27,11 @@ Los administradores que administran la clinica y a sus usuarios.
 Se puede acceder a esta aplicacion mediante el siguiente [link](https://clinicafr.herokuapp.com/)
 
 
+## Como Registrarse
+(https://github.com/federamundo5/ClinicaLab4/blob/master/src/assets/readme/Registro.gif)
+## Como Loguearse
 
+(https://github.com/federamundo5/ClinicaLab4/blob/master/src/assets/readme/login.gif)
 
 ## Running unit tests
 
