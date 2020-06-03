@@ -37,4 +37,4 @@ Se puede acceder a esta aplicacion mediante el siguiente [link](https://clinicaf
 
 ## Herramientas
 
-Esta aplicacion fue desarrollada utilizando angular, y firebase
+Esta aplicacion fue desarrollada utilizando angular y firebase
