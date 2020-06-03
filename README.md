@@ -26,7 +26,8 @@ Los administradores que administran la clinica y a sus usuarios.
 
 Se puede acceder a esta aplicacion mediante el siguiente [link](https://clinicafr.herokuapp.com/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+
 
 ## Running unit tests
 

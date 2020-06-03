@@ -45,8 +45,8 @@ user;
     captchaResuelto;
 usuarios = [];
     
-
-
+//6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR
+//6Lcltv8UAAAAAKjxI7_qnVL_caBKLVnDF7RoERWA
   constructor(  private authService: AuthService,  private router: Router,      private constructorForm: FormBuilder,   private especialidadesService: EspecialidadesService, 
     private usuariosService: UsuariosServiceService, private fileService: FileServiceService  )
    {  
