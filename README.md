@@ -6,7 +6,6 @@ de espera general. Está abierta al público de lunes
 a viernes en el horario de 8:00 a 19:00, y los
 sábados en el horario de 8:00 a 14:00.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
 ## Objetivo
 
