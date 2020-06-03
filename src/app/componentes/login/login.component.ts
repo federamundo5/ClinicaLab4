@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
 
 
   Entrar() {
-    
+    window.localStorage.setItem("User",this.email);
+
     this.authService.LoginUsuario(this.email, this.clave).then((res)=>
     {
       this.MostarMensaje("Te logueaste exitosamente", true);

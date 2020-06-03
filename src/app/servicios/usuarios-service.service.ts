@@ -31,6 +31,13 @@ users;
   }
 
 
+  ObtenerUsuario<T>(param,value){
+    var entity = 'usuarios';
+
+    return this.firestore.collection<T>(entity, ref => ref.where(param,'==', value )).valueChanges();
+
+  }  
+
 
   public getUsers():Observable<any[]>{
 
@@ -46,14 +53,7 @@ users;
   }
 
 
-  public test(){
-    var getUser = window.localStorage.getItem("User");
-
-    return firebase.database().ref('/usuarios/' + getUser).once('value').then(function(snapshot) {
-      var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-      // ...
-    });
-  }
+ 
 
 
   public getProfileUser(){

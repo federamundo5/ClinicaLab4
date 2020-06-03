@@ -9,13 +9,10 @@
       <hr>
 
 
-      <select multiple  [(ngModel)]="especialidadSeleccionada" name="selectusuarios">
-        <option *ngFor="let item of usuarios"  [value]="item.data.email">{{item.data.email}}</option>
-     </select>     
-     
+
 
       <re-captcha (resolved)="resolved($event,'as')"
-      siteKey="6LfeDQAVAAAAACskyUmyU1aHDmg4_pN_l8bfP8Kt">  
+      siteKey="6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR">  
 </re-captcha>
 
 
@@ -27,7 +24,7 @@
       <div class="btn-group">
         <button class="button"  (click)="selectPaciente()">Paciente</button>
         <button class="button" (click)="selectProfesional()">Profesional</button>
-        <button *ngIf="perfilYaLogeado=='Admin'" class="button"  (click)="selectAdmin()">Admin</button>
+        <button *ngIf="perfilYaLogeado" class="button"  (click)="selectAdmin()">Admin</button>
       </div>
 
     </div>

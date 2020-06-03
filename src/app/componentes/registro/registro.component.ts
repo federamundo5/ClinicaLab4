@@ -9,6 +9,7 @@ import {UsuariosServiceService} from '../../servicios/usuarios-service.service';
 import { FileServiceService } from 'src/app/servicios/file-service.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {Usuario} from '../../clases/usuario'
 
 @Component({
   selector: 'app-registro',
@@ -16,14 +17,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  public users = [];
 
-  /* constructor( private miConstructor:FormBuilder) { }
-   email=new FormControl('',[Validators.email]);
-   formRegistro:FormGroup=this.miConstructor.group({
-     usuario:this.email
-   });*/
- 
  
    email: string = "";
    clave: string = "";
@@ -44,9 +38,11 @@ perfilYaLogeado;
 user;
     captchaResuelto;
 usuarios = [];
-    
-//6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR
-//6Lcltv8UAAAAAKjxI7_qnVL_caBKLVnDF7RoERWA
+users : Usuario[];    
+
+//6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR LOCALHOST
+
+//6LfeDQAVAAAAACskyUmyU1aHDmg4_pN_l8bfP8Kt HEROKU CAPTCHA
   constructor(  private authService: AuthService,  private router: Router,      private constructorForm: FormBuilder,   private especialidadesService: EspecialidadesService, 
     private usuariosService: UsuariosServiceService, private fileService: FileServiceService  )
    {  
@@ -66,15 +62,19 @@ usuarios = [];
     });
   
 
-    this.usuariosService.getUserbyStorage().subscribe((catsSnapshot) => {
-      this.usuarios = [];
-      catsSnapshot.forEach((catData: any) => {
-        this.usuarios.push({
-          id: catData.payload.doc.id,
-          data: catData.payload.doc.data()
-        });
-      })
-    });
+
+       
+    var getUser = window.localStorage.getItem("User");
+
+    this.usuariosService.ObtenerUsuario<Usuario>("email",getUser).subscribe(users=>{
+            this.users=users;
+            users.forEach(user => {
+              if(user.perfil == "Admin"){
+                this.perfilYaLogeado = true;
+                console.log(this.perfilYaLogeado);
+              }
+            });
+          })    
 
   }
 
