@@ -21,20 +21,55 @@ export class EspecialidadesService {
 
 
 
-  public especialidadesUsuario(especialidades,email ) {
+  public especialidadesUsuario(especialidades,email,nombre,apellido ) {
 
 
     especialidades.forEach(element => {
       let data = {
         especialidad: element,
         email: email,
+        nombre: nombre,
+        apellido: apellido
       }
       this.firestore.collection('especialidadUsuario').add(data);
     });
-    
 
-   // return this.firestore.collection('usuarios').add(data);
+    
   }
+
+
+  BorrarEspecialidades(emailuser){
+    var entity = 'especialidadUsuario';
+    var param = 'email';
+    
+    var jobskill_query = this.firestore.collection(entity, ref => ref.where(param,'==', emailuser ));
+
+    jobskill_query.get().subscribe(delitems => delitems.forEach( doc=> doc.ref.delete()));
+
+
+    return true;
+  }
+
+
+
+
+
+  ObtenerEspecialidadUsuario<T>(emailuser){
+    var entity = 'especialidadUsuario';
+    var param = 'email';
+    return this.firestore.collection<T>(entity, ref => ref.where(param,'==', emailuser )).valueChanges();
+  }  
+
+
+
+  
+  ObtenerUsuariosEspecialidad<T>(especialidad){
+    var entity = 'especialidadUsuario';
+    var param = 'especialidad';
+    return this.firestore.collection<T>(entity, ref => ref.where(param,'==', especialidad )).valueChanges();
+  }  
+
+
 
   public nuevaEspecialidad(especialidad: string) {
     

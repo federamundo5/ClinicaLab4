@@ -14,6 +14,11 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { ProfesionalesPendientesComponent } from './componentes/profesionales-pendientes/profesionales-pendientes.component';
 import { SacarTurnoComponent } from './componentes/sacar-turno/sacar-turno.component';
 import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-especialidad.component';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
+import { ConfigProfesionalComponent } from './componentes/config-profesional/config-profesional.component'
+import { TurnoSolicitadoComponent } from './turno-solicitado/turno-solicitado.component';
+import { ListaTurnosComponent } from './lista-turnos/lista-turnos.component';
+import { AtencionComponent } from './componentes/atencion/atencion.component';
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
@@ -24,13 +29,18 @@ const routes: Routes = [
   {path: 'Profesional' , component: ProfesionalAltaComponent},
   {path: 'Profesional/Listado' , component: ProfesionalListadoComponent},
   {path: 'Profesional/Alta' , component: ProfesionalAltaComponent},
+  {path: 'Profesional/Configuracion' , component: ConfigProfesionalComponent},
   {path: 'Paciente' , component: PacienteComponent},
   {path: 'Paciente/Listado' , component: PacienteListadoComponent},
   {path: 'Paciente/Alta' , component: PacienteAltaComponent},
   {path: 'Admin/Pendientes' , component: ProfesionalesPendientesComponent},
   {path: 'Especialidad/Alta' , component: AltaEspecialidadComponent},
-  {path: 'Login' , component: LoginComponent},
+  {path: 'Login' , component: LoginComponent, data: {animation: 'Login'}},
   {path: 'Turno' , component: SacarTurnoComponent},
+  {path: 'Perfil' , component: PerfilUsuarioComponent},
+  {path: 'TurnoSolicitado' , component: TurnoSolicitadoComponent},
+  {path: 'Atender' , component: AtencionComponent},
+  {path: 'listaTurnos' , component: ListaTurnosComponent},
   {path: 'Registro' , component: RegistroComponent},
 ];
 

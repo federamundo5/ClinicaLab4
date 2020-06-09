@@ -19,28 +19,32 @@
 
     </ul>
   
-    <div  class="dropdown">
-      <button class="dropbtn" routerLink="/Admin">Admin</button>
+    <div  class="dropdown" *ngIf="this.perfil != 'Paciente'">
+      <button class="dropbtn">Especialidad</button>
       <div class="dropdown-content">
-      <a  routerLink="/Admin/Listado">Listado</a>
-      <a  routerLink="/Admin/Alta">Alta</a>
+      <a  routerLink="/Especialidad/Alta">Alta</a>
       </div>
     </div>
 
 
-    <div  class="dropdown">
-        <button class="dropbtn" routerLink="/Profesional">Profesional</button>
+    <div  class="dropdown"  *ngIf="this.perfil == 'Admin'">
+        <button class="dropbtn">Administracion</button>
         <div class="dropdown-content">
-        <a  routerLink="/Profesional/Listado">Listado</a>
-        <a  routerLink="/Profesional/Alta">Alta</a>
+        <a  routerLink="/Admin/Pendientes">Profesionales Pendientes</a>
         </div>
       </div>
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" *ngIf="this.perfil == 'Paciente'">
         <li class="nav-item">
           <a class="nav-link" routerLink="/Turno">Nuevo Turno <span class="sr-only">(current)</span></a>
         </li>
+      </ul>
   
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Perfil">Mi Perfil <span class="sr-only">(current)</span></a>
+        </li>
       </ul>
   
 
@@ -48,8 +52,8 @@
   
 
       <ul class="nav navbar-nav ml-auto">
-        <li [hidden]="logeado" class="nav-item">
-          <a class="nav-link"  routerLink="/Registro"><span class="fa fa-address-card"></span> Registrarse</a>
+        <li [hidden]="logeado && this.perfil != 'Admin'" class="nav-item">
+          <a class="nav-link"  routerLink="/Registro"><span class="fa fa-address-card"></span> Registro</a>
         </li>
         <li [hidden]="logeado" class="nav-item">
           <a class="nav-link" routerLink="/Login"><span class="fa fa-user"></span> Login</a>

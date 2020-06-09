@@ -7,8 +7,6 @@
     <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   </head>
 
 
@@ -22,37 +20,63 @@
             <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
             </div>
-            <select class="select" id="inputGroupSelect01" > Seleccionar
-                <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
-            <option [value]="item.data.especialidad" *ngFor="let item of this.especialidades">{{item.data.especialidad}}</option>
+            <select class="select" id="inputGroupSelect01" (change)="EspecialidadesChange($event)" [(ngModel)]="this.especialidadSeleccionada" name="especialidadSeleccionada" > Seleccionar
+            <option [value]="item.data.especialidad" *ngFor="let item of this.especialidades" >{{item.data.especialidad}}</option>
             </select>
          </div>
          <div class="input-group mb-2">
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Profesionales</label>
           </div>
-          <select class="select"  id="profesionalInput"> 
+          <select class="select"  id="profesionalInput"  [(ngModel)]="this.profesionalSeleccionado" name="profesionalSeleccionado" > 
               <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
               <option [value]="0" *ngIf="this.profesionales.length==0"selected >No hay profesionales disponibles</option>
-              <option [value]="item.id"  *ngFor="let item of this.profesionales">{{item.apellido}}</option>
+              <option [value]="item.email"  *ngFor="let item of this.profesionales">{{item.apellido}}</option>
           </select>
         </div>
 
             <label>Fecha        </label>
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+            <input matInput  [matDatepickerFilter]="this.myFilter" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [(ngModel)]="fecha" name="fecha">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           
-          <select class="select"  id="horariosInput"> 
-            <option [value]="-1" *ngIf="this.profesionales.length!=0" selected>Elegir una Opcion</option>
-            <option [value]="item"  *ngFor="let item of this.horarios">{{item}}</option>
-        </select>
 
-          
-        </form>
-    
-
-        
+            <button type="submit" (click)="Buscar()" class="BuscarBtn">Buscar</button>
+          </form>        
     </div>
+
+    </div>
+
+    <hr>
+
+    <div *ngIf="this.error">
+      {{this.mensajeError}}
+    </div>
+
+    <div *ngIf="this.tablaVisible">
+
+      
+    <table class="table" >
+      <thead class="thead-light">
+        <tr>
+            <th scope="col">Horario</th>
+            <th scope="col">Profesional</th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let horario of horarios; let i=index" >
+          <td>{{horario.hora}}<i class="fas fa-list"></i></td>
+          <td>{{horario.nombre}} {{horario.apellido}}</td>
+         <td> <button type="button"  class="buttonTurno" (click)="sacarTurno(horario)">Sacar Turno</button></td>
+        </tr>
+
+
+      </table>
+          <div  *ngIf="ocupados" class="alert alert-warning" role="alert">
+            <h4 class="alert-heading"></h4>
+            <p style="text-align: center;">No hay turnos disponibles </p>
+            <p class="mb-0"></p>
+          </div>
 
     </div>

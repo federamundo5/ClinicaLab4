@@ -1,0 +1,31 @@
+<p>Configuracion </p>
+
+<hr>
+<form>
+
+    <mat-form-field style="margin-left: 20px">
+        <mat-label>Dias</mat-label>
+        <mat-select  multiple  [(ngModel)]="this.diasSeleccionados" name="diasSeleccionados" >
+          <mat-option *ngFor="let dia of dias" ng-selected="this.diasSeleccionados.includes(dia)" [value]="dia">{{dia}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      
+
+      <mat-form-field style="margin-left: 20px">
+        <mat-label>Horarios</mat-label>
+    <mat-select  multiple [(ngModel)]="this.horariosSeleccionados" name="horariosSeleccionados"> 
+      <mat-option *ngFor="let horario of horarios"  ng-selected="this.horariosSeleccionados.includes(horario)"  [value]="horario">{{horario}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 20px">
+    <mat-label>Especialidades</mat-label>
+    <mat-select  multiple [(ngModel)]="this.especialidadesUsuario"   name="especialidadesSeleccionadas">
+      <mat-option *ngFor="let especialidad of especialidades"   ng-selected="this.especialidadesUsuario.includes(especialidad)" [value]="especialidad.data.especialidad">{{especialidad.data.especialidad}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button id="buttonConfigurar" type="submit" (click)="Configurar()" class="configurationbtn">Configurar</button>
+
+</form>

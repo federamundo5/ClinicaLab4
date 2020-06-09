@@ -22,10 +22,6 @@ users;
     return this.firestore.collection('usuarios').add(data);
   }
 
-  public getUser(documentId: string) {
-    return this.firestore.collection('usuarios').doc(documentId).snapshotChanges();
-  }
-  
   public getUsersSnapshot() {
     return this.firestore.collection('usuarios').snapshotChanges();
   }
@@ -53,28 +49,83 @@ users;
   }
 
 
- 
+  ObtenerHorasUsuario<T>(emailuser){
+    var entity = 'horasProfesional';
+    var param = 'email';
+    return this.firestore.collection<T>(entity, ref => ref.where(param,'==', emailuser )).valueChanges();
+  }  
+
+  ObtenerDiasUsuario<T>(emailuser){
+    var entity = 'diasProfesional';
+    var param = 'email';
+    return this.firestore.collection<T>(entity, ref => ref.where(param,'==', emailuser )).valueChanges();
+  }  
 
 
-  public getProfileUser(){
+  BorrarDias(emailuser){
+    var entity = 'diasProfesional';
+    var param = 'email';
+    
+    var jobskill_query = this.firestore.collection(entity, ref => ref.where(param,'==', emailuser ));
+
+    jobskill_query.get().subscribe(delitems => delitems.forEach( doc=> doc.ref.delete()));
 
 
-    var perfil;
-    this.authService.afAuth.user.subscribe(datos=>{
-      var p = this.getUsers();
-      p.forEach(element => {
-        element.forEach(element2 => {
-             if(datos.email == element2.email)
-                {
-                perfil = element2.perfil;
-                console.log ("estoy aca..");
-               }
-         });        
-        });
-      }) 
-      console.log("retornando..");
-      return perfil;
+    return true;
   }
+
+
+
+  BorrarHoras(emailuser){
+    var entity = 'horasProfesional';
+    var param = 'email';
+    
+    var jobskill_query = this.firestore.collection(entity, ref => ref.where(param,'==', emailuser ));
+
+    jobskill_query.get().subscribe(delitems => delitems.forEach( doc=> doc.ref.delete()));
+
+
+    return true;
+  }
+
+
+
+  public altaHoras(horas,email,nombre,apellido ) {
+
+
+    horas.forEach(element => {
+      let data = {
+        hora: element,
+        email: email,
+        nombre: nombre,
+        apellido: apellido
+      }
+      this.firestore.collection('horasProfesional').add(data);
+    });
+  }
+
+
+  public altaDias(dias,email, nombre,apellido ) {
+
+
+    dias.forEach(element => {
+      let data = {
+        dias: element,
+        email: email,
+        nombre: nombre,
+        apellido: apellido
+      }
+      this.firestore.collection('diasProfesional').add(data);
+    });
+  }
+
+
+
+
+
+
+
+
 
 
 
@@ -106,13 +157,16 @@ var value2 = false;
     return this.firestore.collection<"usuarios">("usuarios", ref => ref.where(parameter,'==', value ).where(parameter2,'==', value2 )).valueChanges({idField: 'identificador'});
   }
 
-  public getProfesionalesAprobados(){   
+  public getProfesionalesAprobados<T>(){   
 
+    
     var parameter = "perfil";
     var value ="Profesional";
     var parameter2 = "aprobado";
 var value2 = true;
-    return this.firestore.collection<"usuarios">("usuarios", ref => ref.where(parameter,'==', value ).where(parameter2,'==', value2 )).valueChanges({idField: 'identificador'});
+
+
+    return this.firestore.collection<T>("usuarios", ref => ref.where(parameter,'==', value ).where(parameter2,'==', value2 )).valueChanges({idField: 'identificador'});
   }
 
   public Aprobar(usuario){
@@ -139,40 +193,5 @@ var value2 = true;
 
 
 
-  private filtraPersonas(mail,lista){
-    var persona;
-    lista().forEach(element=>{
-      if(mail == element.mail){
-        persona=element;
-      }
-    })
-    return persona;
-  }
-
-  private filtraProfesionales(lista){
-
-    console.log(lista);
-
-    let usuarios=[];
-    this.armarLista(lista).forEach(element=>{
-      if(element.tipo == "Profesional"){
-        usuarios.push(element);
-      }
-    })
-    return usuarios;
-  }
-
-  private armarLista( datos: Object ){
-    const usuarios = [];
-    if(datos == null) return [];
-
-    Object.keys( datos ).forEach( key =>{
-          let usuario: any = datos[key];
-          usuario.id=key;
-          usuarios.push(usuario);
-        
-    })
-    return usuarios;
-  }
 
 }

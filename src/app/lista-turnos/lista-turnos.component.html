@@ -1,0 +1,46 @@
+<h3> Mis Turnos</h3>
+
+<div *ngIf="!turnos.length > 0">
+    No hay turnos asignados.
+</div>
+
+
+<div *ngIf="turnos.length > 0">
+
+      
+    <table class="table" >
+      <thead class="Thead">
+        <tr>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Profesional</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody class="tbody" *ngIf="!this.actualizando">
+        <tr  *ngFor="let turno of turnos; let i=index" >
+          <td>{{turno.especialidad}}<i class="fas fa-list"></i></td>
+          <td>{{turno.pacienteNombre}} {{turno.pacienteApellido}}</td>
+          <td>{{turno.profesionalNombre}} {{turno.profesionalApellido}}</td>
+          <td>{{turno.fecha}}</td>
+          <td>{{turno.hora}}</td>
+          <td>{{turno.estado}}</td>
+          <td *ngIf="this.perfil == 'Profesional'">   
+            <button id="buttonAprobar" (click)="Aprobar(turno)" *ngIf="turno.estado  == 'Pendiente Aprobacion Profesional'"> Aprobar</button>
+            <button id="buttonAtender"  (click)="Atender(turno)" *ngIf="turno.estado  == 'Aprobado'"> Atender</button>
+           </td>
+          <td>
+              <button id="buttonCancelar" (click)="CancelarTurno(turno)" *ngIf="turno.estado  != 'Cancelado' && turno.estado != 'Cerrado' && turno.estado != 'Pendiente Reseña Usuario'"> Cancelar</button></td>
+              <button id="buttonReseña"   *ngIf="turno.estado  == 'Pendiente Reseña Usuario'"> Reseña</button>
+
+      
+            </tr>
+
+
+    </table>
+
+    </div>

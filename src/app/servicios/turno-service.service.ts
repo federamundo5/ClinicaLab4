@@ -14,6 +14,69 @@ export class TurnoServiceService {
     
   }
 
+
+
+  public altaTurno(especialidad,fecha,hora,pacienteNombre,pacienteEmail,pacienteApellido,profesionalEmail,profesionalNombre,profesionalApellido,estado ) {
+
+
+      let data = {
+        fecha: fecha,
+        hora: hora,
+        pacienteNombre: pacienteNombre,
+        pacienteEmail: pacienteEmail,  
+        pacienteApellido: pacienteApellido,
+        profesionalEmail: profesionalEmail,
+        profesionalNombre: profesionalNombre,
+        profesionalApellido: profesionalApellido,
+        especialidad : especialidad,
+        estado :estado
+      }
+      this.firestore.collection('turnos').add(data);
+
+  }
+
+public AltaDatosConsulta(idTurno, temperatura,presion,edad, datosParticulares)
+{
+    let data = {
+      idTurno: idTurno,
+      temperatura: temperatura,
+      presion: presion,
+      edad: edad,  
+      datosParticulares: datosParticulares,
+    }
+    this.firestore.collection('datosConsulta').add(data);
+
+}
+
+  public obtenerTurno<T>(documentId: string) {
+    return this.firestore.collection('turnos').doc(documentId).snapshotChanges();
+  }
+
+  public obtenerTurnosPaciente<T>(email){   
+
+    
+    var parameter = "pacienteEmail";
+
+
+    return this.firestore.collection<T>("turnos", ref => ref.where(parameter,'==', email )).valueChanges({idField: 'identificador'});
+  }
+
+
+  public obtenerTurnosProfesional<T>(email){   
+
+    
+    var parameter = "profesionalEmail";
+
+
+    return this.firestore.collection<T>("turnos", ref => ref.where(parameter,'==', email )).valueChanges({idField: 'identificador'});
+  }
+
+
+    public actualizaTurno(documentId: string, data: any) {
+      return this.firestore.collection('turnos').doc(documentId).set(data);
+    }
+
+
   public horarios(){
     let horarios=[];
     
@@ -31,4 +94,20 @@ export class TurnoServiceService {
     horarios.push("19:00");
     return horarios;
   }
+
+
+  
+  public dias(){
+    let dias=[];
+    
+    dias.push("Lunes");
+    dias.push("Martes");
+    dias.push("Miercoles");
+    dias.push("Jueves");
+    dias.push("Viernes");
+    dias.push("Sabado");
+
+    return dias;
+  }
+
 }

@@ -1,0 +1,49 @@
+.Thead
+{
+    background-color:darkcyan;
+ color:white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tbody tr:hover {
+      background-color:#d5f4f6;}
+
+
+
+      #buttonCancelar {
+          border-radius: 5px;
+          background-color: #fb0000;
+          color:white;
+        }
+
+        #buttonCancelar:hover {
+            background-color: #a50303af;
+          }
+  
+
+          
+      #buttonAprobar {
+        border-radius: 5px;
+        background-color: #03ca7e;
+        color:white;
+      }
+
+      #buttonAprobar:hover {
+          background-color: #00e99baf;
+        }
+
+        #buttonAtender {
+            border-radius: 5px;
+            background-color: #006941;
+            color:white;
+          }
+    
+          #buttonAtender:hover {
+              background-color: #003f2aaf;
+            }
+

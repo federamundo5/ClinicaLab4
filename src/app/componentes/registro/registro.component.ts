@@ -104,7 +104,7 @@ users : Usuario[];
       
      this.newUser();
      if(this.perfil == "Profesional"){
-      this.especialidadesService.especialidadesUsuario(this.especialidadSeleccionada,this.email);
+      this.especialidadesService.especialidadesUsuario(this.especialidadSeleccionada,this.email,this.nombre,this.apellido);
     }
 
     window.localStorage.setItem("User",this.email);

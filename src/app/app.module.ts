@@ -31,6 +31,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-especialidad.component';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
+import { ConfigProfesionalComponent } from './componentes/config-profesional/config-profesional.component';
+import {MatSelectModule} from '@angular/material/select';
+import { TurnoSolicitadoComponent } from './turno-solicitado/turno-solicitado.component';
+import { ListaTurnosComponent } from './lista-turnos/lista-turnos.component';
+import { AtencionComponent } from './componentes/atencion/atencion.component';
 
 @NgModule({
   declarations: [
@@ -52,16 +58,24 @@ import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-
     ProfesionalesPendientesComponent,
     SacarTurnoComponent,
     AltaEspecialidadComponent,
+    PerfilUsuarioComponent,
+    ConfigProfesionalComponent,
+    TurnoSolicitadoComponent,
+    ListaTurnosComponent,
+    AtencionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     RecaptchaModule,
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
+    MatSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
   AngularFirestoreModule, // imports firebase/firestore, only needed for database features
   AngularFireAuthModule, BrowserAnimationsModule, // imports firebase/auth, only needed for auth features
@@ -70,3 +84,4 @@ import { AltaEspecialidadComponent } from './componentes/alta-especialidad/alta-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

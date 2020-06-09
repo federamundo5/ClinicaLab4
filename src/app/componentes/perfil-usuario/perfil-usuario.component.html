@@ -1,0 +1,27 @@
+<app-menu-bar></app-menu-bar>
+
+
+<h2 STYLE="margin-top:20px"> Perfil</h2>
+
+<hr>
+<div *ngFor="let user of users" class="divsPerfil">
+    <div class="card">
+        <img [src]="imagen" alt="User" style="width:100%">
+        <h1>{{user.name}} {{user.apellido}}</h1>
+        <p class="title">{{user.perfil}}</p>
+        <ng-container *ngFor="let item of especialidades">
+            <p>{{item.especialidad}}</p>
+          </ng-container>
+          <p *ngIf="user.perfil == 'Profesional'">{{this.aprobado}}</p>       
+        <p><button>{{user.email}}</button></p>
+      </div>
+
+
+      <hr>
+
+      <h2>Informacion Usuario </h2>
+  <button id="buttonProf" routerLink="/Profesional/Configuracion" *ngIf="user.perfil == 'Profesional'"> Configuracion Profesional</button>
+
+  <app-lista-turnos></app-lista-turnos>
+
+    </div>

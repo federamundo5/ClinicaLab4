@@ -1,0 +1,56 @@
+<app-menu-bar></app-menu-bar>
+
+<h2 STYLE="margin-top:30px">  {{this.turno.especialidad}} - Profesional: {{this.turno.profesionalNombre}} {{this.turno.profesionalApellido}}</h2>
+
+<hr>
+
+<div id="divAtencion">
+
+
+<h3>Esta atendiendo al paciente: {{this.turno.pacienteNombre}} {{this.turno.pacienteApellido}}</h3>
+
+<div class="container">
+    <form>
+        <h3>Datos del paciente:</h3>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Edad</label>
+            <input type="text" class="form-control" id="edadPaciente"   name ="edad" [(ngModel)]="edad"  placeholder="Edad">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Temperatura</label>
+            <input type="text" class="form-control" id="temperatura" name="temperatura" [(ngModel)]="temperatura"   placeholder="Temperatura">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Presion</label>
+          <input type="text" class="form-control" id="presion" name="presion" [(ngModel)]="presion"  placeholder="Presion">
+        </div>
+        <h3>Datos Particulares</h3>
+        <div class="form-row" *ngIf="this.datosParticulares.length < 3">
+          <div class="form-group col-md-6">
+            <label for="inputCity">Titulo Dato</label>
+            <input type="text" class="form-control" [(ngModel)]="TituloParticular" name="TituloParticular" id="tituloDato">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Valor Dato</label>
+                <input type="text" class="form-control" [(ngModel)]="ValorParticular" name="ValorParticular" id="valorDato">
+          </div>
+          <div class="form-group col-md-2">
+            <button type="button" (click)="agregarDato()" class="btn btn-dark">Agregar Dato Particular</button>
+          </div>
+        </div>
+
+        <div  *ngFor="let dato of datosParticulares;" >           
+            <h3> {{dato.dato}}        {{dato.valor}}</h3>
+        </div>
+
+
+        <h4 *ngIf="this.error">{{this.mensajeError}}</h4>
+
+        <button type="submit" class="btn btn-primary" (click)="TerminarAtencion()">Terminar</button> 
+      </form>
+</div>
+
+
+</div>
