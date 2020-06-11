@@ -34,6 +34,11 @@ Se puede acceder a esta aplicacion mediante el siguiente [link](https://clinicaf
 ![](https://github.com/federamundo5/ClinicaLab4/blob/master/src/assets/readme/login.gif)
 
 
+## Sacar Turno
+
+![](https://github.com/federamundo5/ClinicaLab4/blob/master/src/assets/readme/NuevoTurno.gif)
+
+
 
 ## Herramientas
 
