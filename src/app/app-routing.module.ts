@@ -19,10 +19,13 @@ import { ConfigProfesionalComponent } from './componentes/config-profesional/con
 import { TurnoSolicitadoComponent } from './turno-solicitado/turno-solicitado.component';
 import { ListaTurnosComponent } from './lista-turnos/lista-turnos.component';
 import { AtencionComponent } from './componentes/atencion/atencion.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 const routes: Routes = [
   {path: '' , component: HomeComponent},
-  {path: 'Home' , component: HomeComponent},
+  {path: 'Home' , component: HomeComponent, data: {animation: 'Home'}},
   {path: 'Admin' , component: AdminComponent},
   {path: 'Admin/Alta' , component: AltaComponent},
   {path: 'Admin/Listado' , component: ListaComponent},
@@ -36,8 +39,8 @@ const routes: Routes = [
   {path: 'Admin/Pendientes' , component: ProfesionalesPendientesComponent},
   {path: 'Especialidad/Alta' , component: AltaEspecialidadComponent},
   {path: 'Login' , component: LoginComponent, data: {animation: 'Login'}},
-  {path: 'Turno' , component: SacarTurnoComponent},
-  {path: 'Perfil' , component: PerfilUsuarioComponent},
+  {path: 'Turno' , component: SacarTurnoComponent, data: {animation: 'Turno'}},
+  {path: 'Perfil' , component: PerfilUsuarioComponent, data: {animation: 'Perfil'}},
   {path: 'TurnoSolicitado' , component: TurnoSolicitadoComponent},
   {path: 'Atender' , component: AtencionComponent},
   {path: 'listaTurnos' , component: ListaTurnosComponent},
@@ -45,7 +48,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
