@@ -105,6 +105,19 @@ users;
   }
 
 
+  public altaLoginProfesional(data) {
+
+
+      this.firestore.collection('profesionalLogin').add(data);
+  }
+
+
+  public ObtenerLogins(){   
+    return this.firestore.collection("profesionalLogin").valueChanges({idField: 'identificador'});
+  }
+
+  
+
   public altaDias(dias,email, nombre,apellido ) {
 
 

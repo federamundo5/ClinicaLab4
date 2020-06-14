@@ -1,0 +1,53 @@
+
+<app-menu-bar></app-menu-bar>
+
+
+
+
+
+<div style="margin-top: 25px">
+
+<h3> Realizar Reseña</h3>
+    <div class="card-body">
+    <form>
+         
+        <h4>Reseña</h4><br>
+        <textarea class="form-control" aria-label="With textarea" name="resena" [(ngModel)]="resena" ></textarea>
+          <br>
+
+          <hr>
+
+  
+          <h4>Comportamiento del Paciente</h4><br>
+          <select class="custom-select"  [(ngModel)]="this.comportamiento" name="comportamientoSelect">
+          <option value="Bueno">Bueno</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Malo">Malo</option>
+        </select>
+
+        <br>
+
+
+        <hr>
+
+<h4>Salud del Paciente</h4>      
+<p> 
+    <input type="radio"  [(ngModel)]="this.salud" name="AppSource" value="Buena">Buena
+    <input type="radio"  [(ngModel)]="this.salud" name="AppSource" value="Intermedia">Intermedia
+    <input type="radio"  [(ngModel)]="this.salud"  name="AppSource" value="Mala">Mala
+    </p>
+
+    <hr>
+
+    <h4>Capacidad de la Clinica para atender el paciente</h4>
+    <div class="inputDiv">
+        <input type="range" value="50" min="0" max="100" autocomplete="off" name="capacidadClinica"  [(ngModel)]="this.capacidad" >
+        </div>
+
+
+        <hr>
+
+      <button class="btn btn-dark btn-block" (click)="Guardar()">Enviar</button>
+    </form>
+    </div>
+</div>

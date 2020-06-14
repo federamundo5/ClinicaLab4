@@ -124,7 +124,12 @@ Validar(){
     this.tablaVisible = true;
     this.usuariosService.ObtenerHorasUsuario<horasUsuario>(this.profesionalSeleccionado).subscribe(horarios=>{
       horarios.forEach(horario => {
+        if(this.diaSeleccionado != 'Sabado')
         this.horarios.push(horario);
+        else{
+          if(horario.hora != '15:00' && horario.hora != "16:00" && horario.hora != "17:00" && horario.hora != "18:00" && horario.hora != "19:00")
+          this.horarios.push(horario);
+        }
       })
     })
 

@@ -8,8 +8,21 @@ import {Usuario} from '../../clases/usuario'
 })
 export class HomeComponent implements OnInit {
   users : Usuario[];    
+  perfil;
+  constructor(private UsuariosService: UsuariosServiceService) { 
 
-  constructor(private UsuariosService: UsuariosServiceService) { }
+    var getUser = window.localStorage.getItem("User");
+
+    this.UsuariosService.ObtenerUsuario<Usuario>("email",getUser).subscribe(users=>{
+      this.users=users;
+      users.forEach(user => {
+          this.perfil = user.perfil;
+        
+      });        
+    
+  })
+}
+
 
   ngOnInit(): void {
 

@@ -40,7 +40,7 @@ export class ListaTurnosComponent implements OnInit {
         {
           this.turnoService.obtenerTurnosProfesional<Turno>(this.emailUsuarioLogueado).subscribe(turnos=>{
             turnos.forEach(turno => {
-              if(turno.estado == "Pendiente Aprobacion Profesional" || turno.estado == "Aprobado")
+              if(turno.estado == "Pendiente Aprobacion Profesional" || turno.estado == "Aprobado" || turno.estado == "Pendiente Reseña Profesional")
               this.turnos.push(turno);
             })
           })
@@ -86,6 +86,16 @@ this.actualizando = true;
 
   Atender(turno){
     this.router.navigate(['/Atender'], { state: { turno: turno } });
+  }
+  
+  Encuesta(turno){
+    this.router.navigate(['/Encuesta'], { state: { turno: turno } });
+
+  }
+
+
+  EncuestaUsuario(turno){
+    this.router.navigate(['/EncuestaUsuario'], { state: { turno: turno } });
 
   }
 }

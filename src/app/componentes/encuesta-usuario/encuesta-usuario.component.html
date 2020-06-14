@@ -1,0 +1,46 @@
+<app-menu-bar></app-menu-bar>
+
+
+<div class="card" style="margin-top:25px">
+
+  <h3><strong>Reseña del Profesional:</strong></h3>
+  {{this.resena.resena}}
+      <hr>
+  <br>
+
+  <div class="card-body">
+      <h3 class="card-title"><strong>Realizar Encuesta</strong></h3>
+      <p class="card-text">Califique al doctor:</p>
+        <input type="radio"  [(ngModel)]="this.calificacionDoctor" name="AppSource" value="1">1
+        <input type="radio"  [(ngModel)]="this.calificacionDoctor" name="AppSource" value="2">2
+        <input type="radio"  [(ngModel)]="this.calificacionDoctor"  name="AppSource" value="3">3
+        <input type="radio"  [(ngModel)]="this.calificacionDoctor"  name="AppSource" value="4">4
+        <input type="radio"  [(ngModel)]="this.calificacionDoctor"  name="AppSource" value="5">5        
+
+
+        <p class="card-text"><span>Califique el establecimiento</span><br>
+<input type="radio"  [(ngModel)]="this.calificacionEstablecimiento" name="califEstablecimiento" value="1">1
+<input type="radio"  [(ngModel)]="this.calificacionEstablecimiento" name="califEstablecimiento" value="2">2
+<input type="radio"  [(ngModel)]="this.calificacionEstablecimiento"  name="califEstablecimiento" value="3">3
+<input type="radio"  [(ngModel)]="this.calificacionEstablecimiento"  name="califEstablecimiento" value="4">4
+<input type="radio"  [(ngModel)]="this.calificacionEstablecimiento"  name="califEstablecimiento" value="5">5
+
+
+<p class="card-text"><span>Califique la puntualidad de la atencion</span><br>
+<input type="radio"  [(ngModel)]="this.calificacionPuntualidad" name="califAtencion" value="1">1
+<input type="radio"  [(ngModel)]="this.calificacionPuntualidad" name="califAtencion" value="2">2
+<input type="radio"  [(ngModel)]="this.calificacionPuntualidad"  name="califAtencion" value="3">3
+<input type="radio"  [(ngModel)]="this.calificacionPuntualidad"  name="califAtencion" value="4">4
+<input type="radio"  [(ngModel)]="this.calificacionPuntualidad"  name="califAtencion" value="5">5
+
+
+      <p class="card-text"><span>Observaciones</span><br>
+      </p>
+      <p class="card-text"><textarea class="form-control" [(ngModel)]="this.observaciones" placeholder="Ingrese un comentario" rows="2"></textarea>
+      </p>
+      <div class="operacion">
+        <button id="buttonEncuesta" (click)="enviarEncuesta()">Enviar</button>
+      </div>
+    </div>
+  </div>
+ 

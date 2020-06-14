@@ -35,16 +35,28 @@ export class TurnoServiceService {
 
   }
 
-public AltaDatosConsulta(idTurno, temperatura,presion,edad, datosParticulares)
+
+
+public AltaDatosConsulta(data)
 {
-    let data = {
-      idTurno: idTurno,
-      temperatura: temperatura,
-      presion: presion,
-      edad: edad,  
-      datosParticulares: datosParticulares,
-    }
+  
     this.firestore.collection('datosConsulta').add(data);
+
+}
+
+
+public AltaDatosEncuestaProfesional(data)
+{
+  
+    this.firestore.collection('EncuestaProfesional').add(data);
+
+}
+
+
+public AltaDatosEncuestaUsuario(data)
+{
+  
+    this.firestore.collection('encuestaUsuario').add(data);
 
 }
 
@@ -59,6 +71,15 @@ public AltaDatosConsulta(idTurno, temperatura,presion,edad, datosParticulares)
 
 
     return this.firestore.collection<T>("turnos", ref => ref.where(parameter,'==', email )).valueChanges({idField: 'identificador'});
+  }
+
+  public ObtenerTextoReseña(idturno){   
+
+    
+    var parameter = "idTurno";
+
+
+    return this.firestore.collection("EncuestaProfesional", ref => ref.where(parameter,'==', idturno )).valueChanges({idField: 'identificador'});
   }
 
 

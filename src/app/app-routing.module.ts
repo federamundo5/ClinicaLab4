@@ -22,7 +22,10 @@ import { AtencionComponent } from './componentes/atencion/atencion.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
-
+import { AuthGuard } from '../app/authguard'
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { EncuestaUsuarioComponent } from './componentes/encuesta-usuario/encuesta-usuario.component';
+import { LoginsComponent } from './componentes/reportes/logins/logins.component';
 const routes: Routes = [
   {path: '' , component: HomeComponent},
   {path: 'Home' , component: HomeComponent, data: {animation: 'Home'}},
@@ -32,18 +35,21 @@ const routes: Routes = [
   {path: 'Profesional' , component: ProfesionalAltaComponent},
   {path: 'Profesional/Listado' , component: ProfesionalListadoComponent},
   {path: 'Profesional/Alta' , component: ProfesionalAltaComponent},
-  {path: 'Profesional/Configuracion' , component: ConfigProfesionalComponent},
+  {path: 'Profesional/Configuracion' ,canActivate:[AuthGuard],  component: ConfigProfesionalComponent},
   {path: 'Paciente' , component: PacienteComponent},
   {path: 'Paciente/Listado' , component: PacienteListadoComponent},
   {path: 'Paciente/Alta' , component: PacienteAltaComponent},
   {path: 'Admin/Pendientes' , component: ProfesionalesPendientesComponent},
-  {path: 'Especialidad/Alta' , component: AltaEspecialidadComponent},
+  {path: 'Especialidad/Alta' , canActivate:[AuthGuard], component: AltaEspecialidadComponent},
   {path: 'Login' , component: LoginComponent, data: {animation: 'Login'}},
   {path: 'Turno' , component: SacarTurnoComponent, data: {animation: 'Turno'}},
   {path: 'Perfil' , component: PerfilUsuarioComponent, data: {animation: 'Perfil'}},
   {path: 'TurnoSolicitado' , component: TurnoSolicitadoComponent},
-  {path: 'Atender' , component: AtencionComponent},
+  {path: 'Atender' , canActivate:[AuthGuard], component: AtencionComponent},
+  {path: 'Encuesta' , canActivate:[AuthGuard], component: EncuestaComponent},
+  {path: 'EncuestaUsuario' , component: EncuestaUsuarioComponent},
   {path: 'listaTurnos' , component: ListaTurnosComponent},
+  {path: 'reporteLogins' , component: LoginsComponent},
   {path: 'Registro' , component: RegistroComponent},
 ];
 

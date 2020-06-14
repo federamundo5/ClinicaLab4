@@ -32,10 +32,11 @@
           <td *ngIf="this.perfil == 'Profesional'">   
             <button id="buttonAprobar" (click)="Aprobar(turno)" *ngIf="turno.estado  == 'Pendiente Aprobacion Profesional'"> Aprobar</button>
             <button id="buttonAtender"  (click)="Atender(turno)" *ngIf="turno.estado  == 'Aprobado'"> Atender</button>
+            <button id="buttonEncuesta"  (click)="Encuesta(turno)" *ngIf="turno.estado  == 'Pendiente Reseña Profesional'"> Dar Reseña</button>
            </td>
           <td>
-              <button id="buttonCancelar" (click)="CancelarTurno(turno)" *ngIf="turno.estado  != 'Cancelado' && turno.estado != 'Cerrado' && turno.estado != 'Pendiente Reseña Usuario'"> Cancelar</button></td>
-              <button id="buttonReseña"   *ngIf="turno.estado  == 'Pendiente Reseña Usuario'"> Reseña</button>
+              <button id="buttonCancelar" (click)="CancelarTurno(turno)" *ngIf="turno.estado  != 'Cancelado' && turno.estado != 'Cerrado' && turno.estado != 'Pendiente Encuesta Usuario'"> Cancelar</button></td>
+              <button id="buttonEncuesta"  (click)="EncuestaUsuario(turno)" *ngIf="turno.estado  == 'Pendiente Encuesta Usuario'"> Realizar Encuesta</button>
 
       
             </tr>

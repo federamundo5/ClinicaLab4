@@ -37,6 +37,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { TurnoSolicitadoComponent } from './turno-solicitado/turno-solicitado.component';
 import { ListaTurnosComponent } from './lista-turnos/lista-turnos.component';
 import { AtencionComponent } from './componentes/atencion/atencion.component';
+import { PruebaComponent } from './componentes/prueba/prueba.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { EncuestaUsuarioComponent } from './componentes/encuesta-usuario/encuesta-usuario.component';
+import { LoginsComponent } from './componentes/reportes/logins/logins.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { AtencionComponent } from './componentes/atencion/atencion.component';
     TurnoSolicitadoComponent,
     ListaTurnosComponent,
     AtencionComponent,
+    PruebaComponent,
+    EncuestaComponent,
+    EncuestaUsuarioComponent,
+    LoginsComponent,
   ],
   imports: [
     BrowserModule,

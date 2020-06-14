@@ -16,3 +16,16 @@
     color: white;
   }
   
+
+  #botonPerfil {
+    padding: 12px 28px;
+    background-color: rgb(0, 151, 161); /* Green */
+   color:white;
+    transition-duration: 0.4s;
+  }
+  
+  #botonPerfil:hover {
+    background-color: rgb(0, 102, 97); /* Green */
+    color: white;
+  }
+  

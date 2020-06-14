@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from  '../../servicios/auth-service.service'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { UsuariosServiceService } from 'src/app/servicios/usuarios-service.service';
+import { Usuario } from 'src/app/clases/usuario';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +18,10 @@ export class LoginComponent implements OnInit {
   clave= '';
   clase="progress-bar progress-bar-info progress-bar-striped ";
   Mensajes: string;
-
+perfil;
 
   constructor(
-    private route: ActivatedRoute, private router: Router, private authService: AuthService
+    private route: ActivatedRoute, private router: Router, private authService: AuthService, private usuariosService: UsuariosServiceService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,12 @@ export class LoginComponent implements OnInit {
 
     this.authService.LoginUsuario(this.email, this.clave).then((res)=>
     {
+      this.usuariosService.ObtenerUsuario<Usuario>("email",this.email).subscribe(users=>{
+        users.forEach(user => {
+            if(user.perfil == "Profesional")   
+            this.GuardarAccesoProfesional();
+        }); 
+      })    
       this.MostarMensaje("Te logueaste exitosamente", true);
       this.router.navigate(['/Home']);
 
@@ -52,6 +60,18 @@ export class LoginComponent implements OnInit {
         }
 
     });
+  }
+
+
+  GuardarAccesoProfesional(){
+    let dia = new Date()
+    let data = {
+      diahora: dia,
+      usuario: this.email,
+    }
+
+    console.log("guardandologin");
+    this.usuariosService.altaLoginProfesional(data);
   }
 
 

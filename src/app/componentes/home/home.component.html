@@ -3,8 +3,12 @@
     <h3>Bienvenido a Clinica Online</h3>
 
 
-    <button id="botonTurnos" [routerLink]="'/Turno'"> Nuevo Turno</button>
+    <button id="botonTurnos" *ngIf="perfil == 'Paciente'" [routerLink]="'/Turno'"> Nuevo Turno</button>
 
+<div *ngIf="perfil == 'Profesional'">
+    <p>Visite su perfil para ver sus turnos pendientes</p>
+    <button id="botonPerfil" [routerLink]="'/Perfil'"> Perfil</button>
+<div>
 
 </div>
 

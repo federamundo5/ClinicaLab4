@@ -47,3 +47,14 @@ th, td {
               background-color: #003f2aaf;
             }
 
+
+            #buttonEncuesta {
+              border-radius: 5px;
+              background-color: #690a81;
+              color:white;
+            }
+      
+            #buttonEncuesta:hover {
+                background-color: #4e0c68af;
+              }
+  

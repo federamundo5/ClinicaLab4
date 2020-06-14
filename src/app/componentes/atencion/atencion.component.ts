@@ -5,6 +5,10 @@ import {TurnoServiceService} from '../../servicios/turno-service.service'
 import { Router } from '@angular/router';
 import { Turno } from 'src/app/clases/turno';
 import { Validators } from '@angular/forms';
+
+import {dynamic} from '../../clases/dynamic'
+
+
 @Component({
   selector: 'app-atencion',
   templateUrl: './atencion.component.html',
@@ -17,7 +21,8 @@ export class AtencionComponent implements OnInit {
  edad;
  presion;
  temperatura;
-datosParticulares = [];
+datosParticulares:Array<dynamic> = [];
+
 ValorParticular;
 TituloParticular;
 mensajeError;
@@ -40,7 +45,8 @@ maximo = false;
     valor: this.ValorParticular,
   }
   this.datosParticulares.push(dato);
-  console.log(this.datosParticulares);
+  this.TituloParticular ="";
+  this.ValorParticular = "";
 }
 
 
@@ -53,9 +59,21 @@ TerminarAtencion()
   console.log(this.idturno);
   console.log(this.datosParticulares);
 
+  let data = {
+    idTurno: this.idturno,
+    temperatura: this.temperatura,
+    presion: this.presion,
+    edad: this.edad,  
+  }
+  this.datosParticulares.forEach(element => {
+    data[element.dato] = element.valor;
+  });
+
   this.error = false;
-  if(this.Validar())
-  this.turnoService.AltaDatosConsulta(this.idturno, this.temperatura,this.presion,this.edad,this.datosParticulares);
+ if(this.Validar()){
+  this.turnoService.AltaDatosConsulta(data);
+  this.router.navigate(['/Encuesta'], { state: { turno: this.turno } });
+}
 }
 
 Validar()
