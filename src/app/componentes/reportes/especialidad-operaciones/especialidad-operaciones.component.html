@@ -1,0 +1,11 @@
+<app-menu-bar></app-menu-bar>
+<div id="especialidad-operaciones">
+
+<div [chart]="this.chartArmado"></div>
+
+</div>
+
+<button class="btn btn-dark"  (click)="Ver()"><i class="fa fa-print"></i> Recargar Estadisticas </button>
+
+<button class="btn btn-dark" style="margin-left:10px"  (click)="Descargar()"><i class="fa fa-download"></i> Descargar Reporte Excel</button>
+<button class="btn btn-dark" style="margin-left:10px"  (click)="ExportarPDF()"><i class="fa fa-download"></i> Exportar PDF</button>

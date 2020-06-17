@@ -196,7 +196,7 @@ var ApellidoPaciente;
             nombrePaciente = user.nombre;
             ApellidoPaciente = user.apellido;
             })
-            this.turnoService.altaTurno(this.especialidadSeleccionada,this.fecha,horario.hora,nombrePaciente,getUser,ApellidoPaciente,horario.email,horario.nombre,horario.apellido, "Pendiente Aprobacion Profesional")
+            this.turnoService.altaTurno(this.especialidadSeleccionada,this.diaSeleccionado,this.fecha,horario.hora,nombrePaciente,getUser,ApellidoPaciente,horario.email,horario.nombre,horario.apellido, "Pendiente Aprobacion Profesional")
           })
           this.router.navigate(['TurnoSolicitado']);
 

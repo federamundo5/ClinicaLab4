@@ -43,6 +43,7 @@ enviarEncuesta(){
   console.log(this.calificacionEstablecimiento);
   console.log(this.calificacionPuntualidad);
   let data = {
+    idTurno: this.idturno,
     calificacionDoctor: this.calificacionDoctor,
     calificacionEstablecimiento: this.calificacionEstablecimiento,
     calificacionPuntualidad: this.calificacionPuntualidad,

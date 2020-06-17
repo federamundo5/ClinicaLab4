@@ -64,6 +64,11 @@ TerminarAtencion()
     temperatura: this.temperatura,
     presion: this.presion,
     edad: this.edad,  
+    datosParticulares: this.datosParticulares,
+    profesional: this.turno.profesionalNombre + " " + this.turno.profesionalApellido,
+    paciente: this.turno.pacienteNombre + " " + this.turno.pacienteApellido,
+    fecha: this.turno.fecha,
+    especialidad: this.turno.especialidad
   }
   this.datosParticulares.forEach(element => {
     data[element.dato] = element.valor;

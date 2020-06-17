@@ -105,6 +105,11 @@ users;
   }
 
 
+  public obtenerDias<T>(){   
+    return this.firestore.collection("diasProfesional").valueChanges({idField: 'identificador'});
+  }
+  
+
   public altaLoginProfesional(data) {
 
 
@@ -117,6 +122,9 @@ users;
   }
 
   
+  
+
+
 
   public altaDias(dias,email, nombre,apellido ) {
 

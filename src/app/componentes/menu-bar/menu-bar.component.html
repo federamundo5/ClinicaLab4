@@ -39,6 +39,25 @@
           <a class="nav-link" routerLink="/Turno">Nuevo Turno <span class="sr-only">(current)</span></a>
         </li>
       </ul>
+
+
+      <div  class="dropdown" *ngIf="this.perfil == 'Admin'">
+        <button class="dropbtn">Reportes</button>
+        <div class="dropdown-content">
+        <a  routerLink="/Reporte/TurnosPorMedico">Medicos por Turno</a>
+        <a  routerLink="/Reporte/EspecialidadesOperaciones">Operaciones por Especialidad</a>
+        <a  routerLink="/Reporte/Ingresos">Ingresos</a>
+        <a  routerLink="/Reporte/DiasPorMedico">Dias por Medico</a>
+        <a  routerLink="/Reporte/TurnosPorDia">Turnos por Dia</a>
+        </div>
+      </div>
+
+
+      <ul class="navbar-nav" *ngIf="this.perfil == 'Admin'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Busqueda">Busqueda <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
   
 
       <ul class="navbar-nav">

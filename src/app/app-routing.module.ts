@@ -26,6 +26,13 @@ import { AuthGuard } from '../app/authguard'
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { EncuestaUsuarioComponent } from './componentes/encuesta-usuario/encuesta-usuario.component';
 import { LoginsComponent } from './componentes/reportes/logins/logins.component';
+import { EspecialidadOperacionesComponent } from './componentes/reportes/especialidad-operaciones/especialidad-operaciones.component';
+import { TurnoporMedicoComponent } from './componentes/reportes/turnopor-medico/turnopor-medico.component';
+import { DiasporMedicoComponent } from './componentes/reportes/diaspor-medico/diaspor-medico.component';
+import { DiaporTurnoComponent } from './componentes/reportes/diapor-turno/diapor-turno.component';
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+
+
 const routes: Routes = [
   {path: '' , component: HomeComponent},
   {path: 'Home' , component: HomeComponent, data: {animation: 'Home'}},
@@ -49,7 +56,12 @@ const routes: Routes = [
   {path: 'Encuesta' , canActivate:[AuthGuard], component: EncuestaComponent},
   {path: 'EncuestaUsuario' , component: EncuestaUsuarioComponent},
   {path: 'listaTurnos' , component: ListaTurnosComponent},
-  {path: 'reporteLogins' , component: LoginsComponent},
+  {path: 'Reporte/Ingresos' , component: LoginsComponent},
+  {path: 'Reporte/EspecialidadesOperaciones' , component: EspecialidadOperacionesComponent},
+  {path: 'Reporte/TurnosPorMedico' , component: TurnoporMedicoComponent},
+  {path: 'Reporte/DiasPorMedico' , component: DiasporMedicoComponent},
+  {path: 'Busqueda' , component: BusquedaComponent},
+  {path: 'Reporte/TurnosPorDia' , component: DiaporTurnoComponent},
   {path: 'Registro' , component: RegistroComponent},
 ];
 

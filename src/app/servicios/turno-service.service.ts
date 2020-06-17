@@ -16,11 +16,12 @@ export class TurnoServiceService {
 
 
 
-  public altaTurno(especialidad,fecha,hora,pacienteNombre,pacienteEmail,pacienteApellido,profesionalEmail,profesionalNombre,profesionalApellido,estado ) {
+  public altaTurno(especialidad,dia,fecha,hora,pacienteNombre,pacienteEmail,pacienteApellido,profesionalEmail,profesionalNombre,profesionalApellido,estado ) {
 
 
       let data = {
         fecha: fecha,
+        dia: dia,
         hora: hora,
         pacienteNombre: pacienteNombre,
         pacienteEmail: pacienteEmail,  
@@ -64,6 +65,14 @@ public AltaDatosEncuestaUsuario(data)
     return this.firestore.collection('turnos').doc(documentId).snapshotChanges();
   }
 
+  public obtenerTurnos<T>(){   
+    return this.firestore.collection("turnos").valueChanges({idField: 'identificador'});
+  }
+
+
+  public obtenerTurnosFull<T>(){   
+    return this.firestore.collection("datosConsulta").valueChanges({idField: 'identificador'});
+  }
   public obtenerTurnosPaciente<T>(email){   
 
     
@@ -83,6 +92,15 @@ public AltaDatosEncuestaUsuario(data)
   }
 
 
+  public ObtenerEncuestaPaciente(idturno)
+{
+  var parameter = "idTurno";
+
+  return this.firestore.collection("encuestaUsuario", ref => ref.where(parameter,'==', idturno )).valueChanges({idField: 'identificador'});
+
+}
+
+
   public obtenerTurnosProfesional<T>(email){   
 
     
@@ -96,6 +114,9 @@ public AltaDatosEncuestaUsuario(data)
     public actualizaTurno(documentId: string, data: any) {
       return this.firestore.collection('turnos').doc(documentId).set(data);
     }
+
+    
+
 
 
   public horarios(){

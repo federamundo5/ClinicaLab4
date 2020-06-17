@@ -3,6 +3,8 @@ import { UsuariosServiceService } from 'src/app/servicios/usuarios-service.servi
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import {Login} from '../../../clases/login'
+import {Turno} from '../../../clases/turno'
+
 import { FileServiceService } from 'src/app/servicios/file-service.service';
 
 @Component({
@@ -30,23 +32,27 @@ export class LoginsComponent implements OnInit {
     esal: 3000
   }];
 
-  constructor(private usuariosService: UsuariosServiceService, private router:Router, private fileService: FileServiceService) { }
+  constructor(private usuariosService: UsuariosServiceService, private router:Router, private fileService: FileServiceService) {
+
+    
+   }
 
   ngOnInit(): void {
     this.usuariosService.ObtenerLogins().subscribe((resp=>{
       console.log(resp);
       this.lista=resp;
     }));
+
    }
 
   
 
   ExportarExcel(){
-    /*var lista:string[]=[];
+    var lista:string[]=[];
     const csv:string[]=[];
 
     lista.push("Usuario");
-    lista.push("Fecha");
+    lista.push("Fecha/Hora");
     csv.push(lista.join(","));
     lista = new Array<string>();
 
@@ -66,11 +72,18 @@ export class LoginsComponent implements OnInit {
       var url = window.URL.createObjectURL(blob);
       var a = document.createElement("a");
       a.href = url;
-      a.download = 'reporte-loginProfesional.csv';
+      a.download = 'reporte-login.csv';
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);*/
-      this.fileService.exportAsExcelFile([JSON.stringify({dato:this.lista})],'logins');
+      document.body.removeChild(a);
+
+  }
+
+
+  
+  ExportarPDF(){
+    var index=0;
+    this.fileService.EscribirPDF("reporte-login",'logins');
 
   }
 }

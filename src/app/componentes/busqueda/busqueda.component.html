@@ -1,0 +1,107 @@
+<app-menu-bar></app-menu-bar>
+
+
+<div class="container" style="margin-top:20px">
+
+    <h3>Busqueda de Turnos</h3>
+
+    <hr>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Profesional</label>
+        <input type="text" [(ngModel)]="this.profesional" class="form-control" placeholder="Buscar por Profesional" name="search">
+      </div>
+      <div class="form-group col-md-4">
+        <label>Paciente</label>
+        <input type="text"  [(ngModel)]="this.paciente"  class="form-control"placeholder="Buscar por Paciente" name="search">
+      </div>
+      <div class="form-group col-md-4">
+      <label>Fecha</label>
+      <input type="text" class ="form-control" [(ngModel)]="this.fecha" placeholder="Buscar por Fecha" name="search">
+    </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Especialidad</label>
+        <input type="text" class="form-control" [(ngModel)]="this.especialidad" placeholder="Buscar por Especialidad" name="search">
+      </div>
+      <div class="form-group col-md-4">
+        <label>Temperatura</label>
+        <input type="text" class="form-control" [(ngModel)]="this.temperatura" placeholder="Buscar por Temperatura.." name="search">
+      </div>
+      <div class="form-group col-md-2">
+        <label>Campo Dinamico</label>
+        <input type="text" class="form-control" [(ngModel)]="this.campo" placeholder="Campo Dinamico" name="search">
+      </div>
+    </div>
+
+  
+
+  <button type="submit" (click)="Buscar()" class="btn btn-info">Buscar</button>
+
+
+
+<table class="table" style="margin-top:20px;" >
+    <thead class="Thead">
+      <tr>
+        <th scope="col">idTurno</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Paciente</th>
+          <th scope="col">Profesional</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Temperatura</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <tr  *ngFor="let turno of turnosFiltrados; let i=index" (click)="AbrirModal(turno)" >
+        <td>{{turno.idTurno}}</td>
+        <td>{{turno.especialidad}}<i class="fas fa-list"></i></td>
+        <td>{{turno.paciente}} {{turno.pacienteApellido}}</td>
+        <td>{{turno.profesional}}</td>
+        <td>{{turno.fecha.toDate().toJSON()}}</td>
+        <td>{{turno.temperatura}}</td>
+        <td>
+    
+          </tr>
+
+
+  </table>
+
+
+
+  <div *ngIf="this.abierto">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Turno</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Paciente: {{this.turnoSelected.paciente}}<br>
+          Profesional: {{this.turnoSelected.profesional}}<br>
+          Especialidad: {{this.turnoSelected.especialidad}}<br>
+          Fecha: {{this.turnoSelected.fecha}}<br>
+          Temperatura: {{this.turnoSelected.temperatura}}<br>         
+          Presion: {{this.turnoSelected.presion}}<br>
+          <hr>
+          <strong>Reseña Profesional:</strong><br>
+          {{this.turnoSelected.resena.resena}}<br>
+          <hr>
+          <strong>Observaciones Paciente:</strong><br>
+          {{this.turnoSelected.encuesta.observaciones}}
+<hr>
+        </div>
+        
+      </div>
+  </div>
+
+</div>

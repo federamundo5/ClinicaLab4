@@ -41,6 +41,12 @@ import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { EncuestaUsuarioComponent } from './componentes/encuesta-usuario/encuesta-usuario.component';
 import { LoginsComponent } from './componentes/reportes/logins/logins.component';
+import { EspecialidadOperacionesComponent } from './componentes/reportes/especialidad-operaciones/especialidad-operaciones.component';
+import { ChartModule } from 'angular-highcharts';
+import { TurnoporMedicoComponent } from './componentes/reportes/turnopor-medico/turnopor-medico.component';
+import { DiasporMedicoComponent } from './componentes/reportes/diaspor-medico/diaspor-medico.component';
+import { DiaporTurnoComponent } from './componentes/reportes/diapor-turno/diapor-turno.component';
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +77,11 @@ import { LoginsComponent } from './componentes/reportes/logins/logins.component'
     EncuestaComponent,
     EncuestaUsuarioComponent,
     LoginsComponent,
+    EspecialidadOperacionesComponent,
+    TurnoporMedicoComponent,
+    DiasporMedicoComponent,
+    DiaporTurnoComponent,
+    BusquedaComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +95,7 @@ import { LoginsComponent } from './componentes/reportes/logins/logins.component'
     MatNativeDateModule,
     HttpClientModule,
     MatSelectModule,
+    ChartModule,
     AngularFireModule.initializeApp(environment.firebase),
   AngularFirestoreModule, // imports firebase/firestore, only needed for database features
   AngularFireAuthModule, BrowserAnimationsModule, // imports firebase/auth, only needed for auth features
