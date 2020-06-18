@@ -26,7 +26,7 @@
           <td>{{turno.especialidad}}<i class="fas fa-list"></i></td>
           <td>{{turno.pacienteNombre}} {{turno.pacienteApellido}}</td>
           <td>{{turno.profesionalNombre}} {{turno.profesionalApellido}}</td>
-          <td>{{turno.fecha}}</td>
+          <td>{{turno.fecha.toDate().toJSON() | fechaPipe}}</td>
           <td>{{turno.hora}}</td>
           <td>{{turno.estado}}</td>
           <td *ngIf="this.perfil == 'Profesional'">   

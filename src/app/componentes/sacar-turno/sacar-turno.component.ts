@@ -63,8 +63,8 @@ this.myFilter = (d: Date): boolean => {
     let year = today.getFullYear();
     let date = today.getDay();
 
-this.minDate = new Date(2020, 5, 11); 
-this.maxDate = new Date(2020, 5, 25); 
+this.minDate = new Date(2020, 5, 18); 
+this.maxDate = new Date(2020, 6, 2); 
 
 //horarios
 

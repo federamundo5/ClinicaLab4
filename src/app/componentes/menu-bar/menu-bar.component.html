@@ -53,7 +53,7 @@
       </div>
 
 
-      <ul class="navbar-nav" *ngIf="this.perfil == 'Admin'">
+      <ul class="navbar-nav" *ngIf="this.perfil != 'Paciente'">
         <li class="nav-item">
           <a class="nav-link" routerLink="/Busqueda">Busqueda <span class="sr-only">(current)</span></a>
         </li>
