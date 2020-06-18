@@ -63,7 +63,7 @@
         <td>{{turno.especialidad}}<i class="fas fa-list"></i></td>
         <td>{{turno.paciente}} {{turno.pacienteApellido}}</td>
         <td>{{turno.profesional}}</td>
-        <td>{{turno.fecha.toDate().toJSON()}}</td>
+        <td>{{turno.fecha.toDate().toJSON() | fechaPipe}}</td>
         <td>{{turno.temperatura}}</td>
         <td>
     

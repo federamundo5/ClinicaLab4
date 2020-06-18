@@ -47,6 +47,9 @@ import { TurnoporMedicoComponent } from './componentes/reportes/turnopor-medico/
 import { DiasporMedicoComponent } from './componentes/reportes/diaspor-medico/diaspor-medico.component';
 import { DiaporTurnoComponent } from './componentes/reportes/diapor-turno/diapor-turno.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { NombrePipe } from './pipes/nombre.pipe';
+import { FechasPipe } from './pipes/fecha.pipe';
+
 
 @NgModule({
   declarations: [
@@ -81,6 +84,8 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
     TurnoporMedicoComponent,
     DiasporMedicoComponent,
     DiaporTurnoComponent,
+    FechasPipe,
+    NombrePipe,
     BusquedaComponent,
   ],
   imports: [
