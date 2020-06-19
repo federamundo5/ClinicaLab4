@@ -90,10 +90,12 @@ if(turno.datos != undefined)
   {   
     if(item.includes(this.busqueda))
 turno.agregar = 0;
+
+if (turno.datos.hasOwnProperty(item) && turno.datos[item].includes(this.busqueda)) {
+  turno.agregar = 0
+ }
   }
-  if (Object.values(turno.datos).indexOf(this.busqueda) > -1) {
-    turno.agregar = 0
-   }
+  
 
 }
 
@@ -104,6 +106,10 @@ console.log("Armando Lista" + this.turnos);
 this.ArmarListaFiltrada();
 
   }
+
+   hasValue(obj, key, value) {
+    return obj.hasOwnProperty(key) && obj[key] === value;
+}
 
 
   ArmarListaFiltrada(){
