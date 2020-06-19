@@ -12,7 +12,7 @@ turnos;
 turnosFiltrados=[];
 especialidad;
 temperatura;
-profesional;
+busqueda;
 paciente;
 campo;
 turnoSelected;
@@ -33,69 +33,88 @@ fecha;
 
   Buscar(){
     this.turnosFiltrados=[];
-    console.log(this.paciente)
+    console.log(this.turnosFiltrados);
+    console.log(this.turnos)
     this.turnos.forEach(turno => {
       turno.agregar =1;
-      if(this.profesional != undefined){
-        if (!turno.profesional.toLocaleLowerCase().includes(this.profesional.toLocaleLowerCase()))
+      if(this.busqueda != undefined){
+        if (turno.profesional.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
         {
         turno.agregar = 0;
-      }
+     }
   }
-  if(this.paciente != undefined){
-    if (!turno.paciente.toLocaleLowerCase().includes(this.paciente.toLocaleLowerCase()))
+
+
+  if(this.busqueda != undefined){
+    if (turno.paciente.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
     {
     turno.agregar = 0;
   }
 }
 
-if(this.especialidad != undefined){
-  if (!turno.especialidad.toLocaleLowerCase().includes(this.especialidad.toLocaleLowerCase()))
+if(this.busqueda != undefined){
+  if (turno.especialidad.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
   {
   turno.agregar = 0;
   }                    
 }
 
-if(this.temperatura != undefined){
-  if (!turno.temperatura.toLocaleLowerCase().includes(this.temperatura.toLocaleLowerCase()))
+if(this.busqueda != undefined && turno.temperatura != undefined){
+  if (turno.temperatura.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
   {
   turno.agregar = 0;
   }                    
 }
 
-if(this.fecha != undefined){
-  if (!turno.fecha.toDate().toJSON().toLocaleLowerCase().includes(this.fecha.toLocaleLowerCase()))
+if(this.busqueda != undefined){
+  if (turno.fecha.toDate().toJSON().toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
   {
   turno.agregar = 0;
   }                    
 }
 
-if(this.campo != undefined){
+if(this.busqueda != undefined && turno.datosParticulares != undefined){
   let contiene = 0;
   turno.datosParticulares.forEach(datoParticular => {
     console.log(datoParticular);
-    if(datoParticular.dato.includes(this.campo))
+    if(datoParticular.dato.includes(this.busqueda))
     contiene = 1;
   });
-  if (contiene  == 0)
+  if (contiene  == 1)
   turno.agregar = 0;
+}
+
+if(turno.datos != undefined)
+{
+  for(let item of Object.keys(turno.datos))
+  {   
+    if(item.includes(this.busqueda))
+turno.agregar = 0;
+  }
+  if (Object.values(turno.datos).indexOf(this.busqueda) > -1) {
+    turno.agregar = 0
+   }
+
 }
 
 })
 
+console.log("Armando Lista" + this.turnos);
+
 this.ArmarListaFiltrada();
 
-    console.log(this.turnos);
   }
 
 
   ArmarListaFiltrada(){
+    
     this.turnos.forEach(turno => {
-      if(turno.agregar == 1){
+      if(turno.agregar == 0){
         this.turnosFiltrados.push(turno);
       }
     })
   }
+  
 
 
 

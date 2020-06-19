@@ -49,6 +49,8 @@ import { DiaporTurnoComponent } from './componentes/reportes/diapor-turno/diapor
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { NombrePipe } from './pipes/nombre.pipe';
 import { FechasPipe } from './pipes/fecha.pipe';
+import { CambiarColorDirective } from './cambiar-color.directive';
+import { CambioTextoDirective } from './cambio-texto.directive';
 
 
 @NgModule({
@@ -87,6 +89,8 @@ import { FechasPipe } from './pipes/fecha.pipe';
     FechasPipe,
     NombrePipe,
     BusquedaComponent,
+    CambiarColorDirective,
+    CambioTextoDirective,
   ],
   imports: [
     BrowserModule,

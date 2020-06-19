@@ -25,6 +25,7 @@ datosParticulares:Array<dynamic> = [];
 
 ValorParticular;
 TituloParticular;
+datos;
 mensajeError;
 error = false;
 maximo = false;
@@ -58,21 +59,31 @@ TerminarAtencion()
   console.log(this.edad);
   console.log(this.idturno);
   console.log(this.datosParticulares);
+  var dato:any = {}
+
+dato["temperatura"] = this.temperatura;
+dato["presion"] = this.temperatura;
+dato["edad"] = this.temperatura;
+
+  dato.temperatura = this.temperatura;
+  dato.presion = this.presion;
+  dato.edad = this.edad;
+  this.datosParticulares.forEach(element => {
+    dato[element.dato] = element.valor;
+  });
+
+  console.log(dato);
 
   let data = {
     idTurno: this.idturno,
-    temperatura: this.temperatura,
-    presion: this.presion,
-    edad: this.edad,  
     datosParticulares: this.datosParticulares,
     profesional: this.turno.profesionalNombre + " " + this.turno.profesionalApellido,
     paciente: this.turno.pacienteNombre + " " + this.turno.pacienteApellido,
     fecha: this.turno.fecha,
-    especialidad: this.turno.especialidad
+    especialidad: this.turno.especialidad,
+    datos : dato
   }
-  this.datosParticulares.forEach(element => {
-    data[element.dato] = element.valor;
-  });
+
 
   this.error = false;
  if(this.Validar()){
