@@ -6,7 +6,7 @@ import { Usuario } from '../clases/usuario';
 })
 export class FechasPipe implements PipeTransform {
 
-    transform(value: string, args: any[]): string {
+    transform(value: string): string {
         if (!value) { return ''; }
         return value.substring(0, 10);
       }
