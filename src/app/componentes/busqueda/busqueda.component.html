@@ -30,8 +30,8 @@
           <th scope="col">Paciente</th>
           <th scope="col">Profesional</th>
           <th scope="col">Fecha</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
+          <th scope="col">Temperatura</th>
+          <th scope="col">Presion</th>
       </tr>
     </thead>
     <tbody class="tbody">
@@ -41,6 +41,8 @@
         <td>{{turno.paciente}} {{turno.pacienteApellido}}</td>
         <td [appCarlosBold]>{{turno.profesional}}</td>
         <td>{{turno.fecha.toDate().toJSON() | fechaPipe}}</td>
+        <td>{{turno.datos.temperatura}}</td>
+        <td>{{turno.datos.presion}}</td>
         <td>
     
           </tr>
@@ -62,18 +64,22 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          Paciente: {{this.turnoSelected.paciente}}<br>
+         <span> Paciente:</span> {{this.turnoSelected.paciente}}<br>
           Profesional: {{this.turnoSelected.profesional}}<br>
           Especialidad: {{this.turnoSelected.especialidad}}<br>
-          Fecha: {{this.turnoSelected.fecha}}<br>
-          Temperatura: {{this.turnoSelected.temperatura}}<br>         
-          Presion: {{this.turnoSelected.presion}}<br>
+          Fecha: {{this.turnoSelected.fecha.toDate().toJSON() | fechaPipe}}<br>
+                  <div *ngFor="let item of this.turnoSelected.datos | datos">
+                        <span>{{item.nombre}}:</span><span>  {{item.valor}}</span>
+                  </div>   
           <hr>
+          <div *ngIf="this.turnoSelected.resena != undefined">
           <strong>Reseña Profesional:</strong><br>
           {{this.turnoSelected.resena.resena}}<br>
           <hr>
+          <div *ngIf="this.turnoSelected.encuesta != undefined">
           <strong>Observaciones Paciente:</strong><br>
           {{this.turnoSelected.encuesta.observaciones}}
+        </div>
 <hr>
         </div>
         

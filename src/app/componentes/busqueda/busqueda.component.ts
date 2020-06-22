@@ -88,7 +88,7 @@ if(turno.datos != undefined)
 {
   for(let item of Object.keys(turno.datos))
   {   
-    if(item.includes(this.busqueda))
+    if(item.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase()))
 turno.agregar = 0;
 
 if (turno.datos.hasOwnProperty(item) && turno.datos[item].includes(this.busqueda)) {
@@ -126,8 +126,11 @@ this.ArmarListaFiltrada();
 
   AbrirModal(turno){
 this.abierto = true;
+console.log(turno);
 this.turnoSelected = turno;
-console.log("hola");
+this.turnoSelected.encuesta = null;
+this.turnoSelected.resena = null;
+
 console.log(this.turnoSelected);
 this.turnoService.ObtenerTextoReseña(turno.idTurno).subscribe(turnos=>{
   turnos.forEach(turno => {
@@ -139,7 +142,6 @@ this.turnoService.ObtenerTextoReseña(turno.idTurno).subscribe(turnos=>{
     turnos.forEach(encuesta => {
       console.log(encuesta);
         this.turnoSelected.encuesta = encuesta;  
-
     });     
     })
 }

@@ -52,6 +52,7 @@ import { FechasPipe } from './pipes/fecha.pipe';
 import { CambiarColorDirective } from './cambiar-color.directive';
 import { CambioTextoDirective } from './cambio-texto.directive';
 
+import { DatosPipe } from './pipes/datos.pipe';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { CambioTextoDirective } from './cambio-texto.directive';
     DiaporTurnoComponent,
     FechasPipe,
     NombrePipe,
+    DatosPipe,
     BusquedaComponent,
     CambiarColorDirective,
     CambioTextoDirective,
